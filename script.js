@@ -28,56 +28,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  langSwitchBtn.addEventListener('click', toggleLanguage);
+  if (langSwitchBtn) {
+    langSwitchBtn.addEventListener('click', toggleLanguage);
+  }
 
 
   /* ==========================================================================
-     CUSTOM NEON CURSOR TRAIL
+     THEME SWITCHER (DARK / LIGHT)
      ========================================================================== */
-  const cursorDot = document.querySelector('.cursor-dot');
-  const cursorOutline = document.querySelector('.cursor-outline');
+  const themeSwitchBtn = document.getElementById('theme-switch');
 
-  let mouseX = 0;
-  let mouseY = 0;
+  // Determine default theme: localStorage -> system preference -> dark
+  let savedTheme = 'dark';
+  try {
+    savedTheme = localStorage.getItem('portfolio-theme');
+    if (!savedTheme) {
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      savedTheme = prefersLight ? 'light' : 'dark';
+    }
+  } catch (e) {
+    console.warn('LocalStorage is not accessible:', e);
+  }
+  htmlElement.setAttribute('data-theme', savedTheme);
 
-  let outlineX = 0;
-  let outlineY = 0;
-
-  // Speed factor of cursor outline lag (lerp factor)
-  const speed = 0.15;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Instantly move the small inner dot
-    cursorDot.style.left = `${mouseX}px`;
-    cursorDot.style.top = `${mouseY}px`;
-  });
-
-  // Lerp loop for outline
-  const animateOutline = () => {
-    const distX = mouseX - outlineX;
-    const distY = mouseY - outlineY;
-
-    outlineX += distX * speed;
-    outlineY += distY * speed;
-
-    cursorOutline.style.left = `${outlineX}px`;
-    cursorOutline.style.top = `${outlineY}px`;
-
-    requestAnimationFrame(animateOutline);
+  // Toggle theme function
+  const toggleTheme = () => {
+    const currentTheme = htmlElement.getAttribute('data-theme') || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    htmlElement.setAttribute('data-theme', newTheme);
+    try {
+      localStorage.setItem('portfolio-theme', newTheme);
+    } catch (e) {
+      console.warn('LocalStorage cannot be written:', e);
+    }
   };
-  animateOutline();
 
-  // Hover effect states
-  const hoverElements = document.querySelectorAll('a, button, .filter-btn, .project-card, input, textarea');
-  hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-hover');
+  if (themeSwitchBtn) {
+    themeSwitchBtn.addEventListener('click', toggleTheme);
+  }
+
+
+
+
+
+  /* ==========================================================================
+     SCROLL PARALLAX ANIMATIONS (CNTRL SHIFTS)
+     ========================================================================== */
+  const parallaxElements = document.querySelectorAll('.scroll-parallax');
+  
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    parallaxElements.forEach(el => {
+      const pSpeed = parseFloat(el.getAttribute('data-speed')) || 1.0;
+      // Calculate offset and apply transform
+      const offset = scrolled * pSpeed * 0.08;
+      el.style.transform = `translate3d(0, ${offset}px, 0)`;
     });
   });
 
@@ -91,17 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
   const openMobileNav = () => {
-    mobileNavOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Lock background scrolling
+    if (mobileNavOverlay) {
+      mobileNavOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const closeMobileNav = () => {
-    mobileNavOverlay.classList.remove('open');
-    document.body.style.overflow = ''; // Unlock background scrolling
+    if (mobileNavOverlay) {
+      mobileNavOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   };
 
-  mobileNavToggle.addEventListener('click', openMobileNav);
-  mobileNavClose.addEventListener('click', closeMobileNav);
+  if (mobileNavToggle) mobileNavToggle.addEventListener('click', openMobileNav);
+  if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
   
   mobileLinks.forEach(link => {
     link.addEventListener('click', closeMobileNav);
@@ -109,24 +118,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================================================
-     SCROLL EFFECTS & ACTIVE LINK HIGHLIGHTING
+     SCROLL ACTIVE NAVIGATION HIGHLIGHTING
      ========================================================================== */
   const header = document.querySelector('header');
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  // Sticky header on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
+    // Header scrolled border styling
+    if (window.scrollY > 40) {
+      header?.classList.add('scrolled');
     } else {
-      header.classList.remove('scrolled');
+      header?.classList.remove('scrolled');
     }
 
-    // Active link update based on scroll position
+    // Calculate active section based on scroll
     let currentActiveSectionId = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120; // Offset for header height
+      const sectionTop = section.offsetTop - 100;
       const sectionHeight = section.clientHeight;
       if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
         currentActiveSectionId = section.getAttribute('id');
@@ -143,19 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================================================
-     SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+     SCROLL REVEAL (INTERSECTION OBSERVER)
      ========================================================================== */
-  const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-
+  const scrollRevealElements = document.querySelectorAll('.skills-section, .about-section, .experience-section, .portfolio-section');
+  
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('reveal-visible');
-        observer.unobserve(entry.target); // Animating only once
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15
+    threshold: 0.1
   });
 
   scrollRevealElements.forEach(el => {
@@ -171,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Remove active from all buttons and add to clicked
       filterButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -181,14 +189,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = card.getAttribute('data-category');
         if (filterValue === 'all' || category === filterValue) {
           card.style.display = 'block';
-          // Subtle animation trigger
           setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'scale(1)';
           }, 50);
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'scale(0.9)';
+          card.style.transform = 'scale(0.96)';
           setTimeout(() => {
             card.style.display = 'none';
           }, 300);
@@ -258,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
       image: 'assets/abutech_landing.png',
       tech: ['Figma', 'UX Research', 'Dashboard Design', 'Data Visualization', 'UI Design Systems'],
       desc: {
-        uz: 'Abutech kompaniyasi uchun tarmoq monitoringi va server yuklamasini kuzatuvchi murakkab analytics dashboard (boshqaruv paneli) dizaynini tayyorladim. Dizaynda asosiy e’tibor ma’lumotlarni chalkashliklarsiz o’qiy olish (data readability) va tungi rejimda ko’rish qulayligiga qaratilgan. Grafik elementlar va diagrammalar neon ranglar yordamida yorqinroq ko’rsatilgan, bu esa muhim ogohlantirishlarni darhol payqash imkonini beradi.',
+        uz: 'Abutech kompaniyasi uchun tarmoq monitoringi va server yuklamasini kuzatuvchi murakkab analytics dashboard (boshqaruv paneli) dizaynini tayyorladim. Dizaynda asosiy e’tibor ma’lumotlarni chalkashliklarsiz o’qiy olish (data readability) va tungi rejimda ko’rish qulayligiga qaratilgan. Grafik elementlar va diagrammalar neon ranglar yordamida yorqinroq ko’rsatilgan, bu esa mudofaa ogohlantirishlarini darhol payqash imkonini beradi.',
         en: 'Conceptualized and designed a system dashboard layout for Abutech, a network systems integration firm. Structured information architecture, color-coded status gauges, and data visualization grids. Used neon highlights against pitch dark components to ensure network administrators quickly catch server warnings and spikes.'
       }
     }
@@ -277,17 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = projectsData[projectId];
     if (!data) return;
 
-    // Get content according to current language
     const currentLangVal = htmlElement.getAttribute('lang') || 'uz';
     const category = currentLangVal === 'uz' ? data.category.uz : data.category.en;
     const desc = currentLangVal === 'uz' ? data.desc.uz : data.desc.en;
 
-    const clientLabel = currentLangVal === 'uz' ? 'Buyurtmachi' : 'Client';
-    const yearLabel = currentLangVal === 'uz' ? 'Yil' : 'Year';
-    const techLabel = currentLangVal === 'uz' ? 'Texnologiyalar' : 'Technologies';
+    const clientLabel = currentLangVal === 'uz' ? 'Buyurtmachi / CLIENT' : 'Client / CLIENT';
+    const yearLabel = currentLangVal === 'uz' ? 'Yil / YEAR' : 'Year / YEAR';
+    const techLabel = currentLangVal === 'uz' ? 'Texnologiyalar / TOOLS' : 'Technologies / TOOLS';
     const projectDetailLabel = currentLangVal === 'uz' ? 'Loyiha Haqida' : 'Project Overview';
 
-    // Build Technologies List
     const techHtml = data.tech.map(t => `<span class="tag-skill">${t}</span>`).join('');
 
     const modalContent = `
@@ -322,31 +327,20 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    modalDynamicContent.innerHTML = modalContent;
-    projectModal.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Lock background scrolling
-    
-    // Add hover states to dynamic elements inside modal
-    const dynamicHoverElements = modalDynamicContent.querySelectorAll('.tag-skill');
-    dynamicHoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        document.body.classList.add('cursor-hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('cursor-hover');
-      });
-    });
+    if (modalDynamicContent) modalDynamicContent.innerHTML = modalContent;
+    if (projectModal) projectModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
   };
 
   const closeModal = () => {
-    projectModal.classList.remove('open');
-    document.body.style.overflow = ''; // Unlock background scrolling
+    if (projectModal) projectModal.classList.remove('open');
+    document.body.style.overflow = '';
     setTimeout(() => {
-      modalDynamicContent.innerHTML = '';
+      if (modalDynamicContent) modalDynamicContent.innerHTML = '';
     }, 500);
   };
 
-  // Add click events to project cards
   projectCards.forEach(card => {
     card.addEventListener('click', () => {
       const projectId = card.getAttribute('data-project-id');
@@ -354,12 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  modalCloseBtn.addEventListener('click', closeModal);
-  modalBackdrop.addEventListener('click', closeModal);
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
 
-  // Close modal with Escape key
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && projectModal.classList.contains('open')) {
+    if (e.key === 'Escape' && projectModal && projectModal.classList.contains('open')) {
       closeModal();
     }
   });
@@ -370,46 +363,46 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================================== */
   const contactForm = document.getElementById('contact-form');
   const formFeedback = document.getElementById('form-feedback');
-  const submitBtn = contactForm.querySelector('.submit-btn');
 
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  if (contactForm) {
+    const submitBtn = contactForm.querySelector('.submit-btn');
 
-    const currentLangVal = htmlElement.getAttribute('lang') || 'uz';
-    const nameInput = document.getElementById('form-name').value;
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    // Button loading state
-    const originalBtnHtml = submitBtn.innerHTML;
-    const loadingText = currentLangVal === 'uz' ? 'Yuborilmoqda...' : 'Sending...';
-    submitBtn.innerHTML = `${loadingText} <i data-lucide="loader" class="animate-spin"></i>`;
-    submitBtn.disabled = true;
-    lucide.createIcons();
+      const currentLangVal = htmlElement.getAttribute('lang') || 'uz';
+      const nameInput = document.getElementById('form-name').value;
 
-    // Mock API Request (1.5 seconds delay)
-    setTimeout(() => {
-      // Re-enable button
-      submitBtn.innerHTML = originalBtnHtml;
-      submitBtn.disabled = false;
+      const originalBtnHtml = submitBtn.innerHTML;
+      const loadingText = currentLangVal === 'uz' ? 'Yuborilmoqda...' : 'Sending...';
+      submitBtn.innerHTML = `${loadingText} <i data-lucide="loader" class="animate-spin" style="width: 14px; height: 14px;"></i>`;
+      submitBtn.disabled = true;
       lucide.createIcons();
 
-      // Feedback message selection
-      const successMsg = currentLangVal === 'uz' 
-        ? `Tashakkur, ${nameInput}! Xabaringiz muvaffaqiyatli yuborildi.` 
-        : `Thank you, ${nameInput}! Your message has been sent successfully.`;
-
-      // Set feedback message
-      formFeedback.textContent = successMsg;
-      formFeedback.className = 'form-feedback-msg success';
-
-      // Clear input fields
-      contactForm.reset();
-
-      // Clear success feedback after 5 seconds
       setTimeout(() => {
-        formFeedback.textContent = '';
-        formFeedback.className = 'form-feedback-msg';
-      }, 5000);
+        submitBtn.innerHTML = originalBtnHtml;
+        submitBtn.disabled = false;
+        lucide.createIcons();
 
-    }, 1500);
-  });
+        const successMsg = currentLangVal === 'uz' 
+          ? `Tashakkur, ${nameInput}! Xabaringiz muvaffaqiyatli yuborildi.` 
+          : `Thank you, ${nameInput}! Your message has been sent successfully.`;
+
+        if (formFeedback) {
+          formFeedback.textContent = successMsg;
+          formFeedback.className = 'form-feedback-msg success';
+        }
+
+        contactForm.reset();
+
+        setTimeout(() => {
+          if (formFeedback) {
+            formFeedback.textContent = '';
+            formFeedback.className = 'form-feedback-msg';
+          }
+        }, 5000);
+
+      }, 1500);
+    });
+  }
 });
