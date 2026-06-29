@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Saidkamol Abdukarimov — UX/UI Designer & Project Manager. Modern, minimalist portfolio and CV website.">
+  <title>Saidkamol Abdukarimov | Portfolio & CV</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Mouse Cursor Trail -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        S<span>.</span>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="#about" class="nav-link active">
+          <span class="lang-uz">Men haqimda</span>
+          <span class="lang-en">About</span>
+        </a>
+        <a href="#experience" class="nav-link">
+          <span class="lang-uz">Tajriba</span>
+          <span class="lang-en">Experience</span>
+        </a>
+        <a href="#skills" class="nav-link">
+          <span class="lang-uz">Ko'nikmalar</span>
+          <span class="lang-en">Skills</span>
+        </a>
+        <a href="#portfolio" class="nav-link">
+          <span class="lang-uz">Portfolio</span>
+          <span class="lang-en">Portfolio</span>
+        </a>
+        <a href="#contact" class="nav-link">
+          <span class="lang-uz">Aloqa</span>
+          <span class="lang-en">Contact</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher Button -->
+        <button id="lang-switch" class="lang-toggle-btn" aria-label="Switch Language">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="lang-label label-uz">UZ</span>
+          <span class="lang-label label-en">EN</span>
+        </button>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Navigation -->
+  <div class="mobile-nav-overlay">
+    <button class="mobile-nav-close" aria-label="Close menu">
+      <i data-lucide="x"></i>
+    </button>
+    <nav class="mobile-menu">
+      <a href="#about" class="mobile-link">
+        <span class="lang-uz">Men haqimda</span>
+        <span class="lang-en">About Me</span>
+      </a>
+      <a href="#experience" class="mobile-link">
+        <span class="lang-uz">Ish tajribasi</span>
+        <span class="lang-en">Experience</span>
+      </a>
+      <a href="#skills" class="mobile-link">
+        <span class="lang-uz">Ko'nikmalar</span>
+        <span class="lang-en">Skills</span>
+      </a>
+      <a href="#portfolio" class="mobile-link">
+        <span class="lang-uz">Portfolio</span>
+        <span class="lang-en">Portfolio</span>
+      </a>
+      <a href="#contact" class="mobile-link">
+        <span class="lang-uz">Aloqa</span>
+        <span class="lang-en">Contact</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="noise-bg"></div>
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    
+    <div class="hero-container">
+      <div class="hero-tag scroll-reveal">
+        <span class="lang-uz">Portfolio & Rezyume</span>
+        <span class="lang-en">Portfolio & CV</span>
+      </div>
+      
+      <h1 class="hero-title scroll-reveal">
+        Saidkamol <br>
+        <span class="gradient-text">Abdukarimov</span>
+      </h1>
+      
+      <div class="hero-roles scroll-reveal">
+        <span class="role">UX/UI Designer</span>
+        <span class="divider">•</span>
+        <span class="role">Project Manager</span>
+        <span class="divider">•</span>
+        <span class="role">Artist</span>
+      </div>
+
+      <p class="hero-desc scroll-reveal">
+        <span class="lang-uz">Zamonaviy va qulay raqamli interfeyslar hamda mahsulotlar yarataman. G'oyadan boshlab tayyor loyihagacha bo'lgan jarayonni boshqaraman.</span>
+        <span class="lang-en">I design modern, intuitive digital interfaces and products, managing projects from concept to pixel-perfect delivery.</span>
+      </p>
+
+      <div class="hero-buttons scroll-reveal">
+        <a href="#portfolio" class="btn btn-primary">
+          <span class="lang-uz">Ishlarimni ko'rish</span>
+          <span class="lang-en">View Projects</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn btn-secondary">
+          <span class="lang-uz">Aloqaga chiqish</span>
+          <span class="lang-en">Get in Touch</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span class="mouse-icon">
+        <span class="wheel"></span>
+      </span>
+      <span class="scroll-text">
+        <span class="lang-uz">Pastga aylantiring</span>
+        <span class="lang-en">Scroll Down</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section section-padding">
+    <div class="section-container">
+      <div class="section-header scroll-reveal">
+        <h2 class="section-title">
+          <span class="lang-uz">Men haqimda</span>
+          <span class="lang-en">About Me</span>
+        </h2>
+        <span class="section-subtitle">01 / INTRODUCTION</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text-card scroll-reveal">
+          <p class="lead-text">
+            <span class="lang-uz">Salom, men Saidkamol Abdukarimov. UX/UI dizayn va grafik dizayn olamida 4 yildan ortiq tajribaga ega ijodkorman.</span>
+            <span class="lang-en">Hello, I am Saidkamol Abdukarimov. A creative professional with over 4 years of hands-on experience in UX/UI and Graphic Design.</span>
+          </p>
+          <p class="body-text">
+            <span class="lang-uz">Men nafaqat chiroyli dizaynlar chizaman, balki loyihalarni boshqarish (Project Management) orqali jamoani umumiy maqsad sari yetaklayman. Everest LC dagi faoliyatim davomida kichik jamoani kengaytirish va yirik ta'lim loyihalarini (Everest Kids) yo'lga qo'yishga muvaffaq bo'lganman. San'at va texnologiya uyg'unligi mening asosiy yo'nalishimdir.</span>
+            <span class="lang-en">I don't just draft beautiful layouts; I lead teams toward shared goals through structured Project Management. During my tenure at Everest LC, I successfully scaled a small team and directed large-scale educational programs like Everest Kids. Blending art and technology is my core passion.</span>
+          </p>
+          <div class="personal-meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">
+                <span class="lang-uz">Yosh</span>
+                <span class="lang-en">Age</span>
+              </span>
+              <span class="meta-value">22 (2004.06.23)</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">
+                <span class="lang-uz">Manzil</span>
+                <span class="lang-en">Location</span>
+              </span>
+              <span class="meta-value">Tashkent, Uzbekistan</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">
+                <span class="lang-uz">Ma'lumot</span>
+                <span class="lang-en">Education</span>
+              </span>
+              <span class="meta-value">
+                <span class="lang-uz">O'rta ma'lumot</span>
+                <span class="lang-en">Secondary Education</span>
+              </span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">
+                <span class="lang-uz">Bandlik turi</span>
+                <span class="lang-en">Employment</span>
+              </span>
+              <span class="meta-value">
+                <span class="lang-uz">To'liq bandlik (On-site)</span>
+                <span class="lang-en">Full-time (On-site)</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-stats scroll-reveal">
+          <div class="stat-card">
+            <h3 class="stat-number">4+</h3>
+            <p class="stat-label">
+              <span class="lang-uz">Yillik tajriba</span>
+              <span class="lang-en">Years of Experience</span>
+            </p>
+          </div>
+          <div class="stat-card">
+            <h3 class="stat-number">11</h3>
+            <p class="stat-label">
+              <span class="lang-uz">Boshqarilgan jamoa a'zolari</span>
+              <span class="lang-en">Team Members Led</span>
+            </p>
+          </div>
+          <div class="stat-card accent-card">
+            <h3 class="stat-number">100%</h3>
+            <p class="stat-label">
+              <span class="lang-uz">Loyihaga fidoyilik</span>
+              <span class="lang-en">Project Dedication</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience-section section-padding">
+    <div class="section-container">
+      <div class="section-header scroll-reveal">
+        <h2 class="section-title">
+          <span class="lang-uz">Ish tajribasi</span>
+          <span class="lang-en">Work Experience</span>
+        </h2>
+        <span class="section-subtitle">02 / JOURNEY</span>
+      </div>
+
+      <div class="timeline">
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-date">
+            <span class="date-range">02.2023 — 04.2025</span>
+            <span class="duration">
+              <span class="lang-uz">2 yil 3 oy</span>
+              <span class="lang-en">2 yrs 3 mos</span>
+            </span>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Everest LC</div>
+            <h3 class="timeline-role">
+              <span class="lang-uz">Loyihalar rahbari (Project Manager)</span>
+              <span class="lang-en">Project Manager</span>
+            </h3>
+            <p class="timeline-desc">
+              <span class="lang-uz">Everest LC o'quv markazi men uchun katta tramplin vazifasini o'tadi. Jamoa va muhit juda ajoyib edi. Ish boshlaganimizda 3 kishi edik, keyinchalik jamoamiz 11 kishiga yetdi. Men "Everest Kids" loyihasini noldan boshqarib, dizayn qilish, kontent yaratish, turli xil tadbirlar (event) va olimpiadalarni tashkil qilish bilan shug'ullandim. Keng ko'lamli loyiha boshqaruvi va yetakchilik ko'nikmalariga ega bo'ldim.</span>
+              <span class="lang-en">Everest LC education center served as a major springboard for me. Starting with just a 3-person team, we successfully scaled to 11 members. I took on the Project Manager role for the "Everest Kids" division, orchestrating everything from brand visual design, UX/UI, marketing content creation, to coordinating large-scale olympiads and promotional events. Gained profound leadership and organizational expertise.</span>
+            </p>
+            <div class="timeline-skills">
+              <span>Project Management</span>
+              <span>UX/UI Design</span>
+              <span>Event Hosting</span>
+              <span>Content Creation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-date">
+            <span class="date-range">06.2021 — 02.2022</span>
+            <span class="duration">
+              <span class="lang-uz">9 oy</span>
+              <span class="lang-en">9 mos</span>
+            </span>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Yoshlar ishlari agentligi (Robovolt)</div>
+            <h3 class="timeline-role">
+              <span class="lang-uz">Grafik dizayner & Mentor</span>
+              <span class="lang-en">Graphic Designer & Mentor</span>
+            </h3>
+            <p class="timeline-desc">
+              <span class="lang-uz">Yoshlar ishlari agentligi homiyligidagi Robovolt robototexnika loyihasida grafik dizayner va o'quvchilar uchun mentor sifatida ishladim. Loyihaning brending elementlarini ishlab chiqdim va dizayn yo'nalishida darslar o'tdim.</span>
+              <span class="lang-en">Worked as a Graphic Designer and Student Mentor at the Robovolt Robotics Project supported by the Youth Affairs Agency. Crafted complete visual branding identity and mentored students in visual arts and digital tools.</span>
+            </p>
+            <div class="timeline-skills">
+              <span>Graphic Design</span>
+              <span>Branding</span>
+              <span>Mentorship</span>
+              <span>Illustrations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-date">
+            <span class="date-range">03.2020 — 05.2020</span>
+            <span class="duration">
+              <span class="lang-uz">3 oy</span>
+              <span class="lang-en">3 mos</span>
+            </span>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Tasvir dizayn</div>
+            <h3 class="timeline-role">
+              <span class="lang-uz">Grafik dizayner (Qadoqlash)</span>
+              <span class="lang-en">Graphic Designer (Packaging)</span>
+            </h3>
+            <p class="timeline-desc">
+              <span class="lang-uz">Turli xil mahsulotlar uchun qadoqlash (packaging) dizaynlarini yaratish ustida ishladim. Mahsulot ko'rinishi va matbaa talablariga mos chizmalarni tayyorlash bo'yicha amaliy tajriba.</span>
+              <span class="lang-en">Specialized in packaging design for product lines. Conceptualized box structures, visual artwork, and print-ready templates while ensuring aesthetic layout and packaging usability.</span>
+            </p>
+            <div class="timeline-skills">
+              <span>Packaging Design</span>
+              <span>Typography</span>
+              <span>Print Preparation</span>
+              <span>Product Mockups</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item scroll-reveal">
+          <div class="timeline-date">
+            <span class="date-range">01.2019 — 11.2019</span>
+            <span class="duration">
+              <span class="lang-uz">11 oy</span>
+              <span class="lang-en">11 mos</span>
+            </span>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Abutech</div>
+            <h3 class="timeline-role">
+              <span class="lang-uz">Grafik dizayner</span>
+              <span class="lang-en">Graphic Designer</span>
+            </h3>
+            <p class="timeline-desc">
+              <span class="lang-uz">Mening professional faoliyatimdagi birinchi jiddiy kompaniyam. Bu yerda men jamoada ishlashni va ajoyib networking qurishni o'rgandim, ko'plab kichik va o'rta loyihalar uchun web hamda grafik dizayn ishlarini bajardim.</span>
+              <span class="lang-en">My very first milestone company. Acquired valuable team collaboration experience and established strong networking connections. Created graphic assets and promotional media layouts.</span>
+            </p>
+            <div class="timeline-skills">
+              <span>UI design basics</span>
+              <span>Graphic Design</span>
+              <span>Networking</span>
+              <span>Vector Art</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section section-padding">
+    <div class="section-container">
+      <div class="section-header scroll-reveal">
+        <h2 class="section-title">
+          <span class="lang-uz">Ko'nikmalar</span>
+          <span class="lang-en">Skills & Toolkit</span>
+        </h2>
+        <span class="section-subtitle">03 / CAPABILITIES</span>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Main Design Skills -->
+        <div class="skills-column scroll-reveal">
+          <h3 class="skills-col-title">
+            <span class="lang-uz">Asosiy Ko'nikmalar</span>
+            <span class="lang-en">Core Expertises</span>
+          </h3>
+          
+          <div class="skill-progress-wrapper">
+            <div class="skill-info">
+              <span class="skill-name">Figma / UI/UX Design</span>
+              <span class="skill-pct">95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-progress-wrapper">
+            <div class="skill-info">
+              <span class="skill-name">Web & Mobile Design</span>
+              <span class="skill-pct">90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-progress-wrapper">
+            <div class="skill-info">
+              <span class="skill-name">Graphic & Branding Design</span>
+              <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 88%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-progress-wrapper">
+            <div class="skill-info">
+              <span class="skill-name">Project Management / Agile</span>
+              <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <div class="skill-progress-wrapper">
+            <div class="skill-info">
+              <span class="skill-name">Packaging Design</span>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages & Extra tools -->
+        <div class="skills-column scroll-reveal">
+          <h3 class="skills-col-title">
+            <span class="lang-uz">Tillar & Qo'shimcha</span>
+            <span class="lang-en">Languages & Extra</span>
+          </h3>
+
+          <div class="languages-box">
+            <div class="lang-card">
+              <div class="lang-icon">
+                <i data-lucide="languages"></i>
+              </div>
+              <div class="lang-details">
+                <span class="lang-name">
+                  <span class="lang-uz">O'zbek tili</span>
+                  <span class="lang-en">Uzbek</span>
+                </span>
+                <span class="lang-level">
+                  <span class="lang-uz">Ona tili (Native)</span>
+                  <span class="lang-en">Native speaker</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="lang-card">
+              <div class="lang-icon">
+                <i data-lucide="languages"></i>
+              </div>
+              <div class="lang-details">
+                <span class="lang-name">
+                  <span class="lang-uz">Ingliz tili</span>
+                  <span class="lang-en">English</span>
+                </span>
+                <span class="lang-level">B2 — Upper-Intermediate</span>
+              </div>
+            </div>
+            
+            <div class="lang-card">
+              <div class="lang-icon">
+                <i data-lucide="languages"></i>
+              </div>
+              <div class="lang-details">
+                <span class="lang-name">
+                  <span class="lang-uz">Rus tili</span>
+                  <span class="lang-en">Russian</span>
+                </span>
+                <span class="lang-level">
+                  <span class="lang-uz">Professional muloqot</span>
+                  <span class="lang-en">Professional communication</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tag-skills-container">
+            <span class="tag-skill">Wireframing</span>
+            <span class="tag-skill">User Research</span>
+            <span class="tag-skill">Prototyping</span>
+            <span class="tag-skill">Illustrator</span>
+            <span class="tag-skill">Photoshop</span>
+            <span class="tag-skill">Team Leadership</span>
+            <span class="tag-skill">Visual Arts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio-section section-padding">
+    <div class="section-container">
+      <div class="section-header scroll-reveal">
+        <h2 class="section-title">
+          <span class="lang-uz">Saralangan ishlar</span>
+          <span class="lang-en">Selected Projects</span>
+        </h2>
+        <span class="section-subtitle">04 / CREATIVE WORKS</span>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="portfolio-filter scroll-reveal">
+        <button class="filter-btn active" data-filter="all">
+          <span class="lang-uz">Barchasi</span>
+          <span class="lang-en">All Works</span>
+        </button>
+        <button class="filter-btn" data-filter="uiux">UX/UI</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="packaging">
+          <span class="lang-uz">Qadoqlash</span>
+          <span class="lang-en">Packaging</span>
+        </button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid scroll-reveal">
+        <!-- Project Card 1: Everest Kids -->
+        <div class="project-card" data-category="uiux" data-project-id="everest-kids">
+          <div class="project-img-wrapper">
+            <img src="assets/everest_kids.png" alt="Everest Kids Mobile App UIUX">
+            <div class="project-overlay">
+              <span class="project-view-btn">
+                <span class="lang-uz">Ko'rish</span>
+                <span class="lang-en">View Project</span>
+                <i data-lucide="eye"></i>
+              </span>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category">UX/UI • Mobile App</span>
+            <h3 class="project-title">Everest Kids</h3>
+          </div>
+        </div>
+
+        <!-- Project Card 2: Robovolt Branding -->
+        <div class="project-card" data-category="branding" data-project-id="robovolt">
+          <div class="project-img-wrapper">
+            <img src="assets/robovolt_design.png" alt="Robovolt Robotics Branding">
+            <div class="project-overlay">
+              <span class="project-view-btn">
+                <span class="lang-uz">Ko'rish</span>
+                <span class="lang-en">View Project</span>
+                <i data-lucide="eye"></i>
+              </span>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category">Branding • Identity</span>
+            <h3 class="project-title">Robovolt Identity</h3>
+          </div>
+        </div>
+
+        <!-- Project Card 3: Tasvir Packaging -->
+        <div class="project-card" data-category="packaging" data-project-id="tasvir">
+          <div class="project-img-wrapper">
+            <img src="assets/packaging_design.png" alt="Tasvir Packaging Box Design">
+            <div class="project-overlay">
+              <span class="project-view-btn">
+                <span class="lang-uz">Ko'rish</span>
+                <span class="lang-en">View Project</span>
+                <i data-lucide="eye"></i>
+              </span>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category">Packaging • Art</span>
+            <h3 class="project-title">Tasvir Luxury Box</h3>
+          </div>
+        </div>
+
+        <!-- Project Card 4: Abutech Dashboard -->
+        <div class="project-card" data-category="uiux" data-project-id="abutech">
+          <div class="project-img-wrapper">
+            <img src="assets/abutech_landing.png" alt="Abutech Web Dashboard UXUI">
+            <div class="project-overlay">
+              <span class="project-view-btn">
+                <span class="lang-uz">Ko'rish</span>
+                <span class="lang-en">View Project</span>
+                <i data-lucide="eye"></i>
+              </span>
+            </div>
+          </div>
+          <div class="project-info">
+            <span class="project-category">UX/UI • Web Dashboard</span>
+            <h3 class="project-title">Abutech Dashboard</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Detail Modals (Dynamic overlay content) -->
+  <div class="project-modal" id="project-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content-wrapper">
+      <button class="modal-close-btn" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+      
+      <div class="modal-body">
+        <!-- Dynamic content injected via JS -->
+        <div id="modal-dynamic-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section section-padding">
+    <div class="section-container">
+      <div class="section-header scroll-reveal">
+        <h2 class="section-title">
+          <span class="lang-uz">Bog'lanish</span>
+          <span class="lang-en">Get In Touch</span>
+        </h2>
+        <span class="section-subtitle">05 / COLLABORATION</span>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Direct Contacts Info -->
+        <div class="contact-info-panel scroll-reveal">
+          <h3 class="contact-title">
+            <span class="lang-uz">Keling, yangi loyihalarni yarataylik!</span>
+            <span class="lang-en">Let's create something together!</span>
+          </h3>
+          <p class="contact-desc">
+            <span class="lang-uz">Savollaringiz bormi yoki loyiha taklifingiz? Istalgan vaqtda aloqaga chiqishingiz mumkin.</span>
+            <span class="lang-en">Have a question or a project proposal? Feel free to reach out anytime. I am ready to collaborate.</span>
+          </p>
+
+          <div class="contact-links-list">
+            <a href="tel:+998948912223" class="contact-link-item">
+              <div class="link-icon">
+                <i data-lucide="phone"></i>
+              </div>
+              <div class="link-data">
+                <span class="link-label">
+                  <span class="lang-uz">Telefon raqam</span>
+                  <span class="lang-en">Call Me</span>
+                </span>
+                <span class="link-value">+998 (94) 891 22 23</span>
+              </div>
+            </a>
+
+            <a href="mailto:23abdukarimov@gmail.com" class="contact-link-item">
+              <div class="link-icon">
+                <i data-lucide="mail"></i>
+              </div>
+              <div class="link-data">
+                <span class="link-label">
+                  <span class="lang-uz">Elektron pochta</span>
+                  <span class="lang-en">Email Me</span>
+                </span>
+                <span class="link-value">23abdukarimov@gmail.com</span>
+              </div>
+            </a>
+
+            <div class="contact-link-item">
+              <div class="link-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div class="link-data">
+                <span class="link-label">
+                  <span class="lang-uz">Manzil</span>
+                  <span class="lang-en">Location</span>
+                </span>
+                <span class="link-value">Tashkent, Uzbekistan</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Medias -->
+          <div class="social-networks">
+            <a href="https://www.linkedin.com/in/artofsaadiy/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">
+              <span class="social-glow"></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.instagram.com/abdukarimov_ms/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <span class="social-glow"></span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sleek Contact Form -->
+        <div class="contact-form-panel scroll-reveal">
+          <form id="contact-form" action="#" method="POST" class="sleek-form">
+            <div class="form-group">
+              <input type="text" id="form-name" required placeholder=" ">
+              <label for="form-name">
+                <span class="lang-uz">Ismingiz</span>
+                <span class="lang-en">Your Name</span>
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" id="form-email" required placeholder=" ">
+              <label for="form-email">
+                <span class="lang-uz">Email manzilingiz</span>
+                <span class="lang-en">Your Email</span>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <textarea id="form-message" rows="5" required placeholder=" "></textarea>
+              <label for="form-message">
+                <span class="lang-uz">Xabaringiz</span>
+                <span class="lang-en">Your Message</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">
+              <span class="lang-uz">Xabar yuborish</span>
+              <span class="lang-en">Send Message</span>
+              <i data-lucide="send"></i>
+            </button>
+            
+            <div id="form-feedback" class="form-feedback-msg">
+              <!-- Success or error message will be shown here -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p class="copyright">&copy; 2026 Abdukarimov Saidkamol. All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <p class="credits">
+          <span class="lang-uz">Dizayn & Ishlab chiqish: Saidkamol</span>
+          <span class="lang-en">Designed & Built by Saidkamol</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
